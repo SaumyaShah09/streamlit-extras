@@ -34,7 +34,7 @@ def style_metric_cards(
     border_radius_px: int = 5,
     border_left_color: str = "#9AD8E1",
     box_shadow: bool = True,
-    hover_effect: bool = True,
+    hover_effect: bool = False,
 ) -> None:
     """
     Applies a custom style to st.metrics in the page
@@ -46,7 +46,7 @@ def style_metric_cards(
         border_radius_px (int, optional): Border radius in pixels. Defaults to 5.
         border_left_color (str, optional): Border left color. Defaults to "#9AD8E1".
         box_shadow (bool, optional): Whether a box shadow is applied. Defaults to True.
-        hover_effect (bool, optional): Adds a subtle hover animation to metric cards. Defaults to True.
+        hover_effect (bool, optional): Adds a subtle hover animation to metric cards. Defaults to False.
     """
     default_bg, default_border = _get_theme_colors()
     if background_color is None:
