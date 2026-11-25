@@ -117,3 +117,29 @@ __author__ = "Chanin Nantasenamat"
 __created_at__ = date(2022, 11, 18)
 __playground__ = True
 __experimental_playground_funcs__ = [_add_metric_card_cards]
+
+def test_hover_effect_default_disabled() -> None:
+    from unittest.mock import patch
+
+    with patch("streamlit_extras.metric_cards.st.html") as mock_html:
+        style_metric_cards()
+
+    css = mock_html.call_args[0][0]
+    assert ":hover" not in css
+
+
+def test_hover_effect_enabled() -> None:
+    from unittest.mock import patch
+
+    with patch("streamlit_extras.metric_cards.st.html") as mock_html:
+        style_metric_cards(hover_effect=True)
+
+    css = mock_html.call_args[0][0]
+    assert "transform: translateY(-4px)" in css
+    assert "transition: all 0.2s ease-in-out" in css
+
+
+__tests__ = [
+    test_hover_effect_default_disabled,
+    test_hover_effect_enabled,
+]
